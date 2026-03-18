@@ -43,11 +43,11 @@ float fbmTurbulence(vec2 p, int octaves) {
 }
 
 float warpedCloud(vec2 p, float drift) {
-    vec2 q = vec2(fbm(p                        + drift * 0.030, 5),
-                  fbm(p + vec2(5.20, 1.30)     - drift * 0.025, 5));
-    vec2 r = vec2(fbm(p + 3.8*q + vec2(1.70, 9.20) + drift*0.018, 5),
-                  fbm(p + 3.8*q + vec2(8.30, 2.80) - drift*0.018, 5));
-    return fbm(p + 4.0 * r, 5);
+    vec2 q = vec2(fbm(p + drift * 0.030, 3),
+                  fbm(p + vec2(5.20, 1.30) - drift * 0.025, 3));
+    vec2 r = vec2(fbm(p + 3.8*q + vec2(1.70, 9.20) + drift*0.018, 3),
+                  fbm(p + 3.8*q + vec2(8.30, 2.80) - drift*0.018, 3));
+    return fbm(p + 4.0 * r, 3);
 }
 
 //========================================================================
@@ -138,13 +138,13 @@ void main() {
     warmColor = mix(warmColor, c_core_warm, smoothstep(0.86, 1.00, warm) * 0.65);
 
     // TURBULENCE
-    float filaments = fbmTurbulence(st * 5.5 + vec2(52.0, 22.0) + t * 0.016, 4);
+    float filaments = fbmTurbulence(st * 5.5 + vec2(52.0, 22.0) + t * 0.016, 3);
     warmColor += c_mid_warm  * smoothstep(0.74, 0.92, filaments) * 0.40;
     warmColor += c_hi_warm   * smoothstep(0.84, 1.00, filaments) * 0.28;
     float warmGlow = fbm(st * 3.6 + vec2(72.0, 6.0) + t * 0.010, 3);
     warmColor += c_hi_warm   * smoothstep(0.78, 1.00, warmGlow) * 0.55;
     warmColor += c_core_warm * smoothstep(0.88, 1.00, warmGlow) * 0.30;
-    float blendNoise = fbm(st * 3.0 + vec2(16.0, 8.5) + t * 0.014, 4);
+    float blendNoise = fbm(st * 3.0 + vec2(16.0, 8.5) + t * 0.014, 3);
     vec3 c_seam_lo   = vec3(0.18, 0.008, 0.09);
     vec3 c_seam_hi   = vec3(0.78, 0.120, 0.42);
     vec3 seamColor   = mix(c_seam_lo, c_seam_hi, smoothstep(0.50, 0.82, blendNoise));

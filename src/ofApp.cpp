@@ -21,7 +21,7 @@ void ofApp::setup() {
 
 	// Earth
 	planet1.setRadius(500);
-	planet1.setResolution(128);
+	planet1.setResolution(64);
 	planet1.setPosition(ofGetWidth() * EARTH_RX, ofGetHeight() * EARTH_RY, EARTH_Z);
 	planet1.rotateDeg(180, 1, 0, 0);
 	texDiffuse1.load("meshes/earth_surface.jpg");
@@ -29,7 +29,7 @@ void ofApp::setup() {
 
 	// Makemake
 	planet2.setRadius(300);
-	planet2.setResolution(128);
+	planet2.setResolution(64);
 	planet2.setPosition(ofGetWidth() * MAKEMAKE_RX, ofGetHeight() * MAKEMAKE_RY, MAKEMAKE_Z);
 	planet2.rotateDeg(180, 1, 0, 0);
 	texDiffuse2.load("meshes/makemake.jpg");
@@ -37,7 +37,7 @@ void ofApp::setup() {
 
 	// Haumea
 	planet3.setRadius(200);
-	planet3.setResolution(128);
+	planet3.setResolution(64);
 	planet3.setPosition(ofGetWidth() * HAUMEA_RX, ofGetHeight() * HAUMEA_RY, HAUMEA_Z);
 	planet3.rotateDeg(180, 1, 0, 0);
 	texDiffuse3.load("meshes/haumea.jpg");
@@ -49,13 +49,14 @@ void ofApp::setup() {
 	// Background
 	backgroundShader.load("shaders_gl3/background");
 	blackHoleShader.load("shaders_gl3/blackhole");
-	backgroundFbo.allocate(ofGetWidth(), ofGetHeight(), GL_RGBA);
+	backgroundFbo.allocate(ofGetWidth() / 2, ofGetHeight() / 2, GL_RGBA);
 
 	// Black hole
 	blackHolePos = glm::vec3(ofGetWidth() * BLACKHOLE_RX, ofGetHeight() * BLACKHOLE_RY, 0);
 
 	oldW = ofGetWidth();
 	oldH = ofGetHeight();
+
 }
 
 //========================================================================
@@ -66,12 +67,12 @@ void ofApp::draw() {
 	ofClear(0, 0, 0, 255);
 	ofPushMatrix();
 	ofPushView();
-	ofViewport(0, 0, ofGetWidth(), ofGetHeight());
-	ofSetupScreenOrtho(ofGetWidth(), ofGetHeight());
+	ofViewport(0, 0, ofGetWidth() / 2, ofGetHeight() / 2);
+	ofSetupScreenOrtho(ofGetWidth() / 2, ofGetHeight() / 2);
 	backgroundShader.begin();
-	backgroundShader.setUniform2f("u_resolution", ofGetWidth(), ofGetHeight());
+	backgroundShader.setUniform2f("u_resolution", ofGetWidth() / 2.0f, ofGetHeight() / 2.0f);
 	backgroundShader.setUniform1f("u_time", ofGetElapsedTimef());
-	ofDrawRectangle(0, 0, ofGetWidth(), ofGetHeight());
+	ofDrawRectangle(0, 0, ofGetWidth() / 2, ofGetHeight() / 2);
 	backgroundShader.end();
 	ofPopView();
 	ofPopMatrix();
@@ -214,7 +215,7 @@ void ofApp::drawHud() {
 
 //========================================================================
 void ofApp::windowResized(int w, int h) {
-	backgroundFbo.allocate(w, h, GL_RGBA);
+	backgroundFbo.allocate(ofGetWidth() / 2, ofGetHeight() / 2, GL_RGBA);
 
 	float rx1 = planet1.getPosition().x / oldW;
 	float ry1 = planet1.getPosition().y / oldH;
