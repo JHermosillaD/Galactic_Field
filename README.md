@@ -8,7 +8,7 @@
 
 A real-time 3D space field built with [openFrameworks](https://openframeworks.cc/) and a personal project to immerse myself in creative coding and revisit my experience with OpenGL through the lens of openFrameworks.
 
-![Galactic_field](https://media.giphy.com/media/raYo2l7bXO8IVJY4Cr/giphy.gif)
+<img src="https://media.giphy.com/media/raYo2l7bXO8IVJY4Cr/giphy.gif" width="768"/>
 
 Project Structure
 ```
