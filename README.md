@@ -2,7 +2,7 @@
 
 ![OF](https://img.shields.io/badge/openFrameworks-0.12.1-black?style=flat-square)
 ![C++](https://img.shields.io/badge/C%2B%2B-17-blue?style=flat-square&logo=c%2B%2B)
-![OpenGL](https://img.shields.io/badge/OpenGL-3.2-green?style=flat-square&logo=opengl)
+![OpenGL](https://img.shields.io/badge/OpenGL-4.6-green?style=flat-square&logo=opengl)
 ![OS](https://img.shields.io/badge/OS-Linux-orange?style=flat-square&logo=linux&logoColor=black)
 ![License](https://img.shields.io/badge/License-GPL--v3.0-red?style=flat-square)
 
