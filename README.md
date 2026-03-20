@@ -6,7 +6,7 @@
 ![OS](https://img.shields.io/badge/OS-Linux-orange?style=flat-square&logo=linux&logoColor=black)
 ![License](https://img.shields.io/badge/License-GPL--v3.0-red?style=flat-square)
 
-A real-time 3D space field demo built with [openFrameworks](https://openframeworks.cc/) to immerse myself in creative coding and revisit my experience with OpenGL through the lens of openFrameworks.
+A real-time 3D space field demo built with [openFrameworks](https://openframeworks.cc/) to immerse myself in creative coding and revisit my experience with OpenGL.
 
 <video width="1280" height="720" src="https://github.com/user-attachments/assets/e3b30439-6737-484b-8c46-812c6a0ed3aa.mp4"></video>
 
